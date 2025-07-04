@@ -1,38 +1,47 @@
-# 📚 Library Management API
+# 📚 Minimal Library Management System - Backend
 
-This is a RESTful API built with TypeScript, Express.js, and MongoDB for managing a library system. It includes features for handling books and borrowing records.
+A RESTful API built using **TypeScript**, **Express.js**, and **MongoDB** for managing a library system. This backend powers a client-side React app, enabling book management, borrow tracking, and borrow summary generation.
 
----
-
-## 🚀 Features
-
-- Add, update, delete, and retrieve books
-- Borrow books with due date validation
-- Automatic availability updates based on quantity
-- Aggregate borrowed data with book info
+> 🔗 [Live Server](https://library-server-one.vercel.app/)
 
 ---
 
-## 🛠️ Tech Stack
+## 🌟 Features
 
-- **Language:** TypeScript
-- **Runtime:** Node.js
-- **Framework:** Express.js
-- **Database:** MongoDB (via Mongoose)
-- **Deployment:** Vercel (Serverless)
+### 📘 Book Management
+- Create, read, update, and delete books
+- Auto-update availability based on book copies
+- Pagination, filtering, and sorting support
+
+### 🔄 Borrow Management
+- Borrow books with due date and quantity validation
+- Decrease available copies after each borrow
+- Aggregate borrowed book data
 
 ---
 
-## 📂 Project Structure
+## 🚀 Tech Stack
+
+| Layer      | Technology        |
+|------------|-------------------|
+| Language   | TypeScript        |
+| Runtime    | Node.js           |
+| Framework  | Express.js        |
+| Database   | MongoDB + Mongoose |
+| Deployment | Vercel (Serverless) |
+
+---
+
+## 📂 Folder Structure (Simplified)
 
 ```
 src/
 ├── app/
-│   ├── controllers/
-│   ├── interfaces/
-│   ├── models/
-├── app.ts
-├── server.ts
+│   ├── controllers/    # Route handlers
+│   ├── interfaces/     # Type definitions
+│   ├── models/         # Mongoose schemas
+├── app.ts              # Express app setup
+├── server.ts           # Entry point
 ```
 
 ---
@@ -40,74 +49,55 @@ src/
 ## ⚙️ Setup Instructions
 
 ### 1. Clone the Repository
-
 ```bash
 git clone https://github.com/rahmansadaf46/Level-2-Assignment-4-Backend.git
 cd Level-2-Assignment-4-Backend
 ```
 
 ### 2. Install Dependencies
-
 ```bash
 npm install
 ```
 
-### 3. Create `.env` File
-
+### 3. Environment Variables
 Create a `.env` file in the root directory:
-
-```
+```env
 MONGODB_URI=your_mongodb_connection_string
 PORT=5000
 ```
 
-> Replace `your_mongodb_connection_string` with your actual MongoDB URI.
-
-### 4. Run Locally (Development)
-
+### 4. Run in Development
 ```bash
 npm run dev
 ```
 
 ### 5. Build for Production
-
 ```bash
 npm run build
 ```
 
 ### 6. Start Production Server
-
 ```bash
 npm start
 ```
 
 ---
 
-## 🌐 Live Demo
+## 🌐 Live API
 
-Deployed on Vercel:  
-🔗 **[https://library-server-one.vercel.app/](https://library-server-one.vercel.app/)**
-
----
-
-## 📘 API Documentation
-
-### Base URL
+Base URL:
 ```
 https://library-server-one.vercel.app/api
 ```
 
 ---
 
-### 📚 Books
+## 📘 Book Endpoints
 
-#### ✅ Create a Book
-
+### ✅ Create a Book
 ```
 POST /api/books
 ```
-
-**Body:**
 ```json
 {
   "title": "1984",
@@ -120,56 +110,44 @@ POST /api/books
 }
 ```
 
-#### 📄 Get All Books
-
+### 📄 Get All Books
 ```
 GET /api/books?page=1&limit=5
 ```
-
-> Optional query params:
+> Optional Query Params:
 - `filter` (by genre)
 - `sortBy` (field)
-- `sort` (`asc` | `desc`)
-- `limit` (number)
-- `page` (number)
+- `sort` (`asc` or `desc`)
+- `limit`, `page`
 
-#### 🔍 Get a Book by ID
-
+### 🔍 Get a Book by ID
 ```
 GET /api/books/:id
 ```
 
-#### 📝 Update a Book
-
+### 📝 Update a Book
 ```
 PUT /api/books/:id
 ```
-
-**Body:** (any fields you want to update)
-
 ```json
 {
   "copies": 10
 }
 ```
 
-#### ❌ Delete a Book
-
+### ❌ Delete a Book
 ```
 DELETE /api/books/:id
 ```
 
 ---
 
-### 🔄 Borrow Books
+## 🔄 Borrow Endpoints
 
-#### ✅ Create a Borrow Entry
-
+### ✅ Create a Borrow Entry
 ```
 POST /api/borrow
 ```
-
-**Body:**
 ```json
 {
   "book": "BOOK_OBJECT_ID",
@@ -178,13 +156,10 @@ POST /api/borrow
 }
 ```
 
-#### 📊 Get Borrowed Summary
-
+### 📊 Get Borrowed Summary
 ```
 GET /api/borrow
 ```
-
-**Response:**
 ```json
 [
   {
@@ -199,12 +174,12 @@ GET /api/borrow
 
 ---
 
-## ❗ Validations
+## 🧪 Validations & Rules
 
-- **ISBN:** Must be 10 or 13 digits, numbers only.
-- **Due Date:** Must be a future date.
-- **Copies:** Must be a positive number.
-- **Genres:**
+- **ISBN**: Must be 10 or 13 digits
+- **Due Date**: Must be a future date
+- **Copies**: Must be a positive number
+- **Genres**:
   - FICTION
   - NON_FICTION
   - SCIENCE
@@ -214,16 +189,33 @@ GET /api/borrow
 
 ---
 
-## 📌 Scripts
+## 📜 Scripts
 
 | Command         | Description                  |
 |----------------|------------------------------|
 | `npm run dev`  | Run dev server with ts-node  |
 | `npm run build`| Transpile TypeScript         |
-| `npm start`    | Start built server           |
-| `npm run lint` | Run ESLint                   |
+| `npm start`    | Start production build       |
+| `npm run lint` | Run ESLint checks            |
 
+---
+
+## 👨‍💻 Author
+
+**Md. Sadaf Rahman**  
+Full Stack Developer | [GitHub](https://github.com/rahmansadaf46)
+
+---
+
+## 🔗 Useful Links
+
+- 🌐 [Live Client](https://library-client-nu.vercel.app/)
+- 🌐 [Live API Server](https://library-server-one.vercel.app/)
+- 💻 [Frontend Repo](https://github.com/rahmansadaf46/Level-2-Assignment-4-Frontend)
+- 💻 [Backend Repo](https://github.com/rahmansadaf46/Level-2-Assignment-4-Backend)
+
+---
 
 ## 📄 License
 
-This project is open-source and available under the [ISC License](LICENSE).
+This project is part of a structured learning assignment. All code is original and plagiarism-free.
