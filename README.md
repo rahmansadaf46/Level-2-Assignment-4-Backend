@@ -42,8 +42,8 @@ src/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/rahmansadaf46/Level-2-Assignment-3.git
-cd Level-2-Assignment-3
+git clone https://github.com/rahmansadaf46/Level-2-Assignment-4-Backend.git
+cd Level-2-Assignment-4-Backend
 ```
 
 ### 2. Install Dependencies
@@ -86,7 +86,7 @@ npm start
 ## 🌐 Live Demo
 
 Deployed on Vercel:  
-🔗 **[https://level-2-assignment-3-one.vercel.app/](https://level-2-assignment-3-one.vercel.app/)**
+🔗 **[https://library-server-one.vercel.app/](https://library-server-one.vercel.app/)**
 
 ---
 
@@ -94,7 +94,7 @@ Deployed on Vercel:
 
 ### Base URL
 ```
-https://level-2-assignment-3-one.vercel.app/api
+https://library-server-one.vercel.app/api
 ```
 
 ---
@@ -123,7 +123,7 @@ POST /api/books
 #### 📄 Get All Books
 
 ```
-GET /api/books?filter=FICTION&sortBy=title&sort=asc&limit=10
+GET /api/books?page=1&limit=5
 ```
 
 > Optional query params:
@@ -131,6 +131,7 @@ GET /api/books?filter=FICTION&sortBy=title&sort=asc&limit=10
 - `sortBy` (field)
 - `sort` (`asc` | `desc`)
 - `limit` (number)
+- `page` (number)
 
 #### 🔍 Get a Book by ID
 
